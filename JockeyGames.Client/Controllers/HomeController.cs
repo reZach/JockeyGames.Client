@@ -26,5 +26,10 @@ namespace JockeyGames.Client.Controllers
 
             return View();
         }
+
+        public ActionResult Crud()
+        {
+            return View();
+        }
     }
 }

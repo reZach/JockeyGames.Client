@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+
+/* Custom css */
+.jockey-color {background-color:#036;}
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {color:#fff;}
+.digit-input {max-width:42px;}
