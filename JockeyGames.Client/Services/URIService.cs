@@ -10,9 +10,9 @@ namespace JockeyGames.Client.Services
     {
         public static string Build(string s)
         {
-            if (ConfigurationManager.AppSettings["JockeyGamesAPIBase"] == "true")
+            if (ConfigurationManager.AppSettings["UseLocalAPIBase"] == "true")
             {
-                return Context
+                return "http://localhost:53518" + s;
             }
             return ConfigurationManager.AppSettings["JockeyGamesAPIBase"].ToString() + s;
         }

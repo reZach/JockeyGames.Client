@@ -30,8 +30,7 @@ namespace JockeyGames.Client.Controllers
             var match = new AddNewMatchViewModel();
             var players = await playerService.GetPlayersAsync();
             var tournaments = await tournamentService.GetTournamentsAsync();
-
-            match.LoadPlayersIntoSelectList(players);
+            
             match.LoadTournamentsIntoSelectList(tournaments);
 
             return View(match);
@@ -41,7 +40,7 @@ namespace JockeyGames.Client.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Match(AddNewMatchViewModel match)
         {
-            Match addMatch = new Match();
+            /*Match addMatch = new Match();
             addMatch.DateTime = DateTime.Now;
             addMatch.Games = new List<Game>();
 
@@ -129,7 +128,7 @@ namespace JockeyGames.Client.Controllers
                 {
                     return View(match);
                 }
-            }
+            }*/
 
             return View(match);
         }

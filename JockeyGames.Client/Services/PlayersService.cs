@@ -1,4 +1,5 @@
-﻿using JockeyGames.Models.Shared;
+﻿using JockeyGames.Models.DTOs;
+using JockeyGames.Models.Shared;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -19,28 +20,26 @@ namespace JockeyGames.Client.Services
         private string Put { get { return "/api/players/{id}"; } }
         private string Delete { get { return "/api/players/{id}"; } }
 
-        public async Task<List<Player>> GetPlayersAsync()
+        public async Task<List<PlayerDTO>> GetPlayersAsync()
         {
             using (HttpClient httpClient = new HttpClient()) {
 
-                return JsonConvert.DeserializeObject<List<Player>>(
-                    await httpClient.GetStringAsync(URIService.Build(Get))
-                );
+                string s = await httpClient.GetStringAsync(URIService.Build(Get));
+                return JsonConvert.DeserializeObject<List<PlayerDTO>>(s);
             }
         }
 
-        public async Task<Player> GetPlayer(int id)
+        public async Task<PlayerDTO> GetPlayer(int id)
         {
             string URI = GetId.Replace("{id}", Convert.ToString(id));
             using (HttpClient httpClient = new HttpClient())
             {
-                return JsonConvert.DeserializeObject<Player>(
-                    await httpClient.GetStringAsync(URIService.Build(URI))
-                );
+                string s = await httpClient.GetStringAsync(URIService.Build(URI));
+                return JsonConvert.DeserializeObject<PlayerDTO>(s);
             }
         }
 
-        public async Task<Player> AddPlayer(Player player)
+        public async Task<PlayerDTO> AddPlayer(PlayerDTO player)
         {
             StringContent json = new StringContent(JsonConvert.SerializeObject(player),
                 Encoding.UTF8, "text/json");
@@ -49,13 +48,13 @@ namespace JockeyGames.Client.Services
             {
                 HttpResponseMessage message = await httpClient.PostAsync(URIService.Build(Post), json);
 
-                return JsonConvert.DeserializeObject<Player>(
+                return JsonConvert.DeserializeObject<PlayerDTO>(
                     await message.Content.ReadAsStringAsync()
                 );
             }
         }
 
-        public async Task<HttpResponseMessage> UpdatePlayer(Player player)
+        public async Task<HttpResponseMessage> UpdatePlayer(PlayerDTO player)
         {
             string URI = Put.Replace("{id}", Convert.ToString(player.Id));
             StringContent json = new StringContent(JsonConvert.SerializeObject(player),

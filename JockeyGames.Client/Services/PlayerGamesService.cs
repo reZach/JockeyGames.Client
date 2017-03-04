@@ -57,13 +57,19 @@ namespace JockeyGames.Client.Services
 
         public async Task<HttpResponseMessage> UpdatePlayerGame(PlayerGame playerGame)
         {
-            string URI = Put.Replace("{id}", Convert.ToString(playerGame.Id));
+            /*string URI = Put.Replace("{id}", Convert.ToString(playerGame.Id));
             StringContent json = new StringContent(JsonConvert.SerializeObject(playerGame),
                 Encoding.UTF8, "text/json");
 
             using (HttpClient httpClient = new HttpClient())
             {
                 return await httpClient.PutAsync(URIService.Build(URI), json);
+            }*/
+            StringContent json = new StringContent(JsonConvert.SerializeObject(playerGame),
+                Encoding.UTF8, "text/json");
+            using (HttpClient httpClient = new HttpClient())
+            {
+                return await httpClient.PutAsync(URIService.Build(Put), json);
             }
         }
 
