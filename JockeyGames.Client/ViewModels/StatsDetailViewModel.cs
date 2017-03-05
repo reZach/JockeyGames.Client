@@ -216,7 +216,11 @@ namespace JockeyGames.Client.ViewModels
             MatchWinPercentage = Math.Round(((double)TotalMatchesWon / (double)TotalMatchesPlayed), 2) * 100;
 
             // match score
-            MatchScore = MatchScore / TotalMatchesPlayed;
+            if (TotalMatchesPlayed > 0)
+            {
+                MatchScore = MatchScore / TotalMatchesPlayed;
+            }
+            
 
             SetName();
         }
