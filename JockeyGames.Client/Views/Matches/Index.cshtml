@@ -1,4 +1,4 @@
-﻿@model IEnumerable<JockeyGames.Models.PingPong.Match>
+﻿@model IEnumerable<JockeyGames.Client.ViewModels.MatchViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -14,6 +14,30 @@
         <th>
             @Html.DisplayNameFor(model => model.DateTime)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Player2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.G1P1Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.G1P2Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.G2P1Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.G2P2Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.G3P1Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.G3P2Score)
+        </th>
         <th></th>
     </tr>
 
@@ -21,6 +45,30 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.DateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Player1.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Player2.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.G1P1Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.G1P2Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.G2P1Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.G2P2Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.G3P1Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.G3P2Score)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

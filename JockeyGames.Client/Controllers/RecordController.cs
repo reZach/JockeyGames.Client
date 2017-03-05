@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using JockeyGames.Models.PingPong;
+﻿using System.Web.Mvc;
 using JockeyGames.Client.ViewModels;
 using JockeyGames.Client.Services;
 using System.Threading.Tasks;
-using JockeyGames.Models.Shared;
 
 namespace JockeyGames.Client.Controllers
 {
     public class RecordController : Controller
     {
         private PlayersService playerService = new PlayersService();
-        private PlayerGamesService playerGameService = new PlayerGamesService();
-        private GamesService gamesService = new GamesService();
-        private MatchService matchService = new MatchService();
-        private TournamentService tournamentService = new TournamentService();
+        //private PlayerGamesService playerGameService = new PlayerGamesService();
+        //private GamesService gamesService = new GamesService();
+        private MatchesService matchService = new MatchesService();
+        //private TournamentService tournamentService = new TournamentService();
 
         // GET: Record
         public ActionResult Index()
@@ -27,11 +21,12 @@ namespace JockeyGames.Client.Controllers
 
         public async Task<ActionResult> Match()
         {
-            var match = new AddNewMatchViewModel();
+            var match = new MatchViewModel();
             var players = await playerService.GetPlayersAsync();
-            var tournaments = await tournamentService.GetTournamentsAsync();
-            
-            match.LoadTournamentsIntoSelectList(tournaments);
+            //var tournaments = await tournamentService.GetTournamentsAsync();
+
+            match.LoadPlayersIntoSelectList(players);
+            //match.LoadTournamentsIntoSelectList(tournaments);
 
             return View(match);
         }

@@ -1,5 +1,4 @@
 ﻿using JockeyGames.Models.DTOs;
-using JockeyGames.Models.Shared;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -23,9 +22,9 @@ namespace JockeyGames.Client.Services
         public async Task<List<PlayerDTO>> GetPlayersAsync()
         {
             using (HttpClient httpClient = new HttpClient()) {
-
-                string s = await httpClient.GetStringAsync(URIService.Build(Get));
-                return JsonConvert.DeserializeObject<List<PlayerDTO>>(s);
+                return JsonConvert.DeserializeObject<List<PlayerDTO>>(
+                    await httpClient.GetStringAsync(URIService.Build(Get))
+                );
             }
         }
 
@@ -34,8 +33,9 @@ namespace JockeyGames.Client.Services
             string URI = GetId.Replace("{id}", Convert.ToString(id));
             using (HttpClient httpClient = new HttpClient())
             {
-                string s = await httpClient.GetStringAsync(URIService.Build(URI));
-                return JsonConvert.DeserializeObject<PlayerDTO>(s);
+                return JsonConvert.DeserializeObject<PlayerDTO>(
+                    await httpClient.GetStringAsync(URIService.Build(URI))
+                );
             }
         }
 

@@ -1,11 +1,8 @@
 ﻿using JockeyGames.Models.PingPong;
-using JockeyGames.Models.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace JockeyGames.Client.ViewModels
@@ -40,7 +37,7 @@ namespace JockeyGames.Client.ViewModels
         public int? Game3Player1Score { get; set; }
         [Range(0, 21)]
         public int? Game3Player2Score { get; set; }
-        public ICollection<Game> Games { get; set; }
+        //public ICollection<Game> Games { get; set; }
 
         public void LoadPlayersIntoSelectList(List<Player> players)
         {
@@ -57,7 +54,7 @@ namespace JockeyGames.Client.ViewModels
             }
         }
 
-        public void LoadTournamentsIntoSelectList(List<Tournament> tournaments)
+        /*public void LoadTournamentsIntoSelectList(List<Tournament> tournaments)
         {
             Tournaments = new List<SelectListItem>();
             tournaments.Sort((a, b) => string.CompareOrdinal(a.Title, b.Title));
@@ -71,6 +68,6 @@ namespace JockeyGames.Client.ViewModels
                     Value = Convert.ToString(t.Id)
                 });
             }
-        }
+        }*/
     }
 }

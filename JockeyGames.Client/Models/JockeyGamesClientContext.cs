@@ -19,14 +19,6 @@ namespace JockeyGames.Client.Models
         {
         }
 
-        public System.Data.Entity.DbSet<JockeyGames.Models.Shared.Player> Players { get; set; }
-
-        public System.Data.Entity.DbSet<JockeyGames.Models.PingPong.Game> Games { get; set; }
-
-        public System.Data.Entity.DbSet<JockeyGames.Models.PingPong.PlayerGame> PlayerGames { get; set; }
-
-        public System.Data.Entity.DbSet<JockeyGames.Models.PingPong.Match> Matches { get; set; }
-
-        public System.Data.Entity.DbSet<JockeyGames.Models.PingPong.Tournament> Tournaments { get; set; }
+        public System.Data.Entity.DbSet<JockeyGames.Models.DTOs.MatchDTO> MatchDTOes { get; set; }
     }
 }

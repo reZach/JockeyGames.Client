@@ -1,4 +1,4 @@
-﻿@model JockeyGames.Models.PingPong.Match
+﻿@model JockeyGames.Client.ViewModels.MatchViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -16,6 +16,70 @@
 
         <dd>
             @Html.DisplayFor(model => model.DateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Player1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Player1.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Player2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Player2.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.G1P1Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.G1P1Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.G1P2Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.G1P2Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.G2P1Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.G2P1Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.G2P2Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.G2P2Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.G3P1Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.G3P1Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.G3P2Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.G3P2Score)
         </dd>
 
     </dl>
