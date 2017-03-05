@@ -83,7 +83,6 @@ namespace JockeyGames.Client.ViewModels
                 if (isPlayer1 && player1Won)
                 {
                     TotalMatchesWon++;
-                    MatchScore++;
 
                     if (g1 > 0)
                     {
@@ -101,7 +100,6 @@ namespace JockeyGames.Client.ViewModels
                 else if (!isPlayer1 && !player1Won)
                 {
                     TotalMatchesWon++;
-                    MatchScore++;
 
                     if (g1 > 0)
                     {
