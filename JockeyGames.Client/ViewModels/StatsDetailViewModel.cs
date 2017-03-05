@@ -21,9 +21,12 @@ namespace JockeyGames.Client.ViewModels
         public int TotalMatchesPlayed { get; set; }
 
         public List<PlayerDTO> Players { get; set; }
+        public List<MatchHistoryViewModel> MatchHistory { get; set; }
 
         public void LoadStats(List<MatchDTO> stats)
         {
+            MatchHistory = new List<MatchHistoryViewModel>();
+
             MatchScore = 0;
             GameWinPercentage = 0.0;
             MatchWinPercentage = 0.0;
@@ -204,9 +207,32 @@ namespace JockeyGames.Client.ViewModels
                 {
                 }
 
-
                 MatchScore += runningScore;
 
+
+                // match history
+                var opponentId = m.PlayerId1 == PlayerId ? m.PlayerId2 : m.PlayerId1;
+                var opponentName = Players.Where(p => p.Id == opponentId).Select(p => p.Name).First();
+                bool iWon = (isPlayer1 && player1Won) || (!isPlayer1 && !player1Won);
+
+                int single = MatchHistory.FindIndex(x => x.OpponentName == opponentName);
+                if (single < 0)
+                {
+                    MatchHistory.Add(new MatchHistoryViewModel
+                    {
+                        OpponentId = opponentId,
+                        OpponentName = opponentName,
+                        LossCount = iWon ? 0 : 1,
+                        WinCount = iWon ? 1 : 0,
+                        WinRate = iWon ? 100 : 0
+                    });
+                }
+                else
+                {
+                    MatchHistory[single].LossCount = iWon ? MatchHistory[single].LossCount : MatchHistory[single].LossCount + 1;
+                    MatchHistory[single].WinCount = iWon ? MatchHistory[single].WinCount + 1 : MatchHistory[single].WinCount;
+                    MatchHistory[single].WinRate = (int)(Math.Round(((double)MatchHistory[single].WinCount / (double)(MatchHistory[single].LossCount + MatchHistory[single].WinCount)), 2) * 100);
+                }
 
                 gamesInMatch = 0;
             }
@@ -227,7 +253,9 @@ namespace JockeyGames.Client.ViewModels
             {
                 MatchScore = MatchScore / TotalMatchesPlayed;
             }
-            
+
+            // sort match history
+            MatchHistory.Sort((a, b) => string.CompareOrdinal(a.OpponentName, b.OpponentName));
 
             SetName();
         }

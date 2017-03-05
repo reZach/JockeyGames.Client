@@ -153,6 +153,7 @@
     <Compile Include="Services\PlayersService.cs" />
     <Compile Include="Services\StatsService.cs" />
     <Compile Include="Services\URIService.cs" />
+    <Compile Include="ViewModels\MatchHistoryViewModel.cs" />
     <Compile Include="ViewModels\MatchViewModel.cs" />
     <Compile Include="ViewModels\StatListViewModel.cs" />
     <Compile Include="ViewModels\StatsDetailViewModel.cs" />

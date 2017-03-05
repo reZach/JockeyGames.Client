@@ -65,7 +65,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.GameWinPercentage)
+            @Html.DisplayFor(model => model.GameWinPercentage)%
         </dd>
 
         <dt>
@@ -73,9 +73,35 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MatchWinPercentage)
+            @Html.DisplayFor(model => model.MatchWinPercentage)%
         </dd>
     </dl>
+
+    
+    <br />
+    <h4>Opponent history</h4>
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Opponent</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Win rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.MatchHistory.Count; i++)
+            {
+                <tr>
+                    <td><a href="/Stats/Details/@(Model.MatchHistory[i].OpponentId)">@Model.MatchHistory[i].OpponentName</a></td>
+                    <td>@Model.MatchHistory[i].WinCount</td>
+                    <td>@Model.MatchHistory[i].LossCount</td>
+                    <td>@(Model.MatchHistory[i].WinRate)%</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 <p>
     @Html.ActionLink("Back to List", "Index")
