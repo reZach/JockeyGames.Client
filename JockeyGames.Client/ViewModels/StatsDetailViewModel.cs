@@ -212,8 +212,15 @@ namespace JockeyGames.Client.ViewModels
             }
 
             // percentages
-            GameWinPercentage = Math.Round(((double)TotalGamesWon / (double)TotalGamesPlayed), 2) * 100;
-            MatchWinPercentage = Math.Round(((double)TotalMatchesWon / (double)TotalMatchesPlayed), 2) * 100;
+            if (TotalGamesPlayed > 0)
+            {
+                GameWinPercentage = Math.Round(((double)TotalGamesWon / (double)TotalGamesPlayed), 2) * 100;
+            }
+            if (TotalMatchesPlayed > 0)
+            {
+                MatchWinPercentage = Math.Round(((double)TotalMatchesWon / (double)TotalMatchesPlayed), 2) * 100;
+            }
+                        
 
             // match score
             if (TotalMatchesPlayed > 0)

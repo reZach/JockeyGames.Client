@@ -45,7 +45,7 @@ namespace JockeyGames.Client.Controllers
                 viewmodel.Add(single);
             }
 
-            viewmodel.Sort((a, b) => a.MatchScore > b.MatchScore ? 1 : -1);
+            viewmodel.Sort((a, b) => a.MatchScore.CompareTo(b.MatchScore));
 
             return View(viewmodel);
         }
