@@ -1,0 +1,82 @@
+﻿@model JockeyGames.Client.ViewModels.StatsDetailViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Stats</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatchScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatchScore)
+        </dd>
+    </dl>
+    <hr />
+    <dl class="dl-horizontal">        
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalGamesWon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalGamesWon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalMatchesWon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalMatchesWon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalGamesPlayed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalGamesPlayed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalMatchesPlayed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalMatchesPlayed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GameWinPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GameWinPercentage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatchWinPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatchWinPercentage)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

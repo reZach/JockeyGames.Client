@@ -119,6 +119,9 @@ namespace JockeyGames.Client.Controllers
                 return RedirectToAction("Index");
             }
 
+            var players = await playerService.GetPlayersAsync();
+            viewmodel.LoadPlayersIntoSelectList(players);
+
             return View(viewmodel);
         }
 
@@ -181,6 +184,10 @@ namespace JockeyGames.Client.Controllers
                 await service.UpdateMatch(matchDTO);
                 return RedirectToAction("Index");
             }
+
+            var players = await playerService.GetPlayersAsync();
+            viewmodel.LoadPlayersIntoSelectList(players);
+
             return View(viewmodel);
         }
 

@@ -1,7 +1,47 @@
-﻿
+﻿@model JockeyGames.Client.ViewModels.StatListViewModel
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
+<div class="form-horizontal">
+    <h4>Stats</h4>
+    <p>
+        @Html.ActionLink("View all", "All")
+    </p>
+    <hr />
+
+    <div id="js-playerlist">
+        <input class="form-control text-box single-line js-fuzzy-search" type="text" placeholder="filter players" value="">
+
+        <ul class="list-group list">
+            @for (var i = 0; i < Model.Players.Count; i++)
+            {
+                <li class="list-group-item">
+                    <a class="name" href="/Stats/Details/@(Model.Players[i].Id)">
+                        <p>@Model.Players[i].Name</p>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>    
+</div>
+
+@section scripts{
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+    
+    <script type="text/javascript">
+        var options = {
+            valueNames: ['name'],
+            fuzzySearch: {
+                searchClass: "js-fuzzy-search",
+                location: 0,
+                distance: 100,
+                threshold: 0.4,
+                multiSearch: true
+            }
+        };
+        var list = new List("js-playerlist", options);
+    </script>
+}

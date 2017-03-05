@@ -20,5 +20,7 @@ namespace JockeyGames.Client.Models
         }
 
         public System.Data.Entity.DbSet<JockeyGames.Models.DTOs.MatchDTO> MatchDTOes { get; set; }
+
+        public System.Data.Entity.DbSet<JockeyGames.Client.ViewModels.StatsDetailViewModel> StatsDetailViewModels { get; set; }
     }
 }

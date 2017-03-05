@@ -1,0 +1,35 @@
+﻿@model IEnumerable<JockeyGames.Client.ViewModels.StatsDetailViewModel>
+@{
+    ViewBag.Title = "All";
+    var list = Model.ToList();
+}
+
+<h2>All</h2>
+
+<div class="container">
+    <h2>Table of stats</h2>
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Match score</th>
+                <th>Game win percentage</th>
+                <th>Match win percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < list.Count; i++)
+            {
+                <tr>
+                    <td>
+                        <a href="/Stats/Details/@(list[i].PlayerId)">@list[i].Name</a>
+                    </td>
+                    <td>@list[i].MatchScore</td>
+                    <td>@list[i].GameWinPercentage</td>
+                    <td>@list[i].MatchWinPercentage</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
