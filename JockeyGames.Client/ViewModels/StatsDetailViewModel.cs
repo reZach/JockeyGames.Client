@@ -77,7 +77,8 @@ namespace JockeyGames.Client.ViewModels
                 g1 = m.G1P1Score - m.G1P2Score;
                 g2 = m.G2P1Score - m.G2P2Score;
                 g3 = m.G3P1Score - m.G3P2Score;
-                if (g1 + g2 + g3 > 0)
+                if (g3 > 0 || 
+                    (g3 == 0 && (g1 > 0 && g2 > 0)))
                 {
                     player1Won = true;
                 }
@@ -104,15 +105,15 @@ namespace JockeyGames.Client.ViewModels
                 {
                     TotalMatchesWon++;
 
-                    if (g1 > 0)
+                    if (g1 < 0)
                     {
                         TotalGamesWon++;
                     }
-                    if (g2 > 0)
+                    if (g2 < 0)
                     {
                         TotalGamesWon++;
                     }
-                    if (g3 > 0)
+                    if (g3 < 0)
                     {
                         TotalGamesWon++;
                     }
@@ -235,6 +236,7 @@ namespace JockeyGames.Client.ViewModels
                 }
 
                 gamesInMatch = 0;
+                player1Won = false;
             }
 
             // percentages
