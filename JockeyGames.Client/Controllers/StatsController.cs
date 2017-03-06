@@ -16,6 +16,7 @@ namespace JockeyGames.Client.Controllers
     {
         private PlayersService playerService = new PlayersService();
         private StatsService statsService = new StatsService();
+        private MatchesService matchesService = new MatchesService();
 
         // GET: Stats
         public async Task<ActionResult> Index()
@@ -32,17 +33,29 @@ namespace JockeyGames.Client.Controllers
         public async Task<ActionResult> All()
         {
             List<StatsDetailViewModel> viewmodel = new List<StatsDetailViewModel>();
-            List<PlayerDTO> players = await playerService.GetPlayersAsync();            
+            List<PlayerDTO> players = await playerService.GetPlayersAsync();
+            List<MatchDTO> matches = await matchesService.GetMatchesAsync();
+            List<MatchDTO> stats = new List<MatchDTO>();
 
             foreach (PlayerDTO p in players)
             {
-                List<MatchDTO> stats = await statsService.GetStats(p.Id);
+                // Add matches player has played in
+                foreach (MatchDTO m in matches)
+                {
+                    if (m.PlayerId1 == p.Id || m.PlayerId2 == p.Id)
+                    {
+                        stats.Add(m);
+                    }
+                }
+
                 var single = new StatsDetailViewModel();
                 single.Players = players;
                 single.PlayerId = p.Id;
                 single.LoadStats(stats);
 
                 viewmodel.Add(single);
+
+                stats.Clear();
             }
 
             viewmodel.Sort((a, b) => a.MatchScore.CompareTo(b.MatchScore));
