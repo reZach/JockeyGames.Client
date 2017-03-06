@@ -2,6 +2,28 @@
 
 @{
     ViewBag.Title = "Details";
+
+    var className = "";
+    if (Model.MatchScore > 1 && Model.MatchScore <= 29)
+    {
+        className = "danger";
+    }
+    else if (Model.MatchScore > 29 && Model.MatchScore <= 46)
+    {
+        className = "warning";
+    }
+    else if (Model.MatchScore > 46 && Model.MatchScore <= 54)
+    {
+        className = "success";
+    }
+    else if (Model.MatchScore > 54 && Model.MatchScore <= 70)
+    {
+        className = "info";
+    }
+    else if (Model.MatchScore > 70)
+    {
+        className = "elite";
+    }
 }
 
 <h2>Details</h2>
@@ -9,7 +31,7 @@
 <div>
     <h4>Stats</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal alert-@(className)">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>

@@ -33,3 +33,40 @@ textarea {
 .navbar-inverse .navbar-brand,
 .navbar-inverse .navbar-nav > li > a {color:#fff;}
 .digit-input {max-width:42px;}
+
+.table > thead > tr > td.info,
+.table > tbody > tr > td.info,
+.table > tfoot > tr > td.info,
+.table > thead > tr > th.info,
+.table > tbody > tr > th.info,
+.table > tfoot > tr > th.info,
+.table > thead > tr.info > td,
+.table > tbody > tr.info > td,
+.table > tfoot > tr.info > td,
+.table > thead > tr.info > th,
+.table > tbody > tr.info > th,
+.table > tfoot > tr.info > th {
+  background-color: #d9edf7;
+}
+
+.table > thead > tr > td.elite,
+.table > tbody > tr > td.elite,
+.table > tfoot > tr > td.elite,
+.table > thead > tr > th.elite,
+.table > tbody > tr > th.elite,
+.table > tfoot > tr > th.elite,
+.table > thead > tr.elite > td,
+.table > tbody > tr.elite > td,
+.table > tfoot > tr.elite > td,
+.table > thead > tr.elite > th,
+.table > tbody > tr.elite > th,
+.table > tfoot > tr.elite > th {
+  background-color: #384f2f;
+  border-color: #d6e9c6;
+  color:#ffffff;
+}
+
+.alert-elite {
+  color: #ffffff;
+  background-color: #384f2f;
+}

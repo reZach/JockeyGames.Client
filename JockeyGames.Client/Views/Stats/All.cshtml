@@ -21,7 +21,29 @@
         <tbody>
             @for (int i = 0; i < list.Count; i++)
             {
-                <tr>
+                var className = "";
+                if (list[i].MatchScore > 1 && list[i].MatchScore <= 29)
+                {
+                    className = "danger";
+                }
+                else if (list[i].MatchScore > 29 && list[i].MatchScore <= 46)
+                {
+                    className = "warning";
+                }
+                else if (list[i].MatchScore > 46 && list[i].MatchScore <= 54)
+                {
+                    className = "success";
+                }
+                else if (list[i].MatchScore > 54 && list[i].MatchScore <= 70)
+                {
+                    className = "info";
+                }
+                else if (list[i].MatchScore > 70)
+                {
+                    className = "elite";
+                }
+
+                <tr class="@(className)">
                     <td>
                         <a href="/Stats/Details/@(list[i].PlayerId)">@list[i].Name</a>
                     </td>
