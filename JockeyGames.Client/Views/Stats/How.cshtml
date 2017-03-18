@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "How";
+}
+
+<h2>How are stats calculated</h2>
+
+<div>
+    <p>Stats are calculated in the following way:</p>
+    <ul>
+        <li>The max Match score® is 100</li>
+        <li>65% of your score is based on your match win percentage</li>
+        <li>35% of your score is based on your match win percentage against the opponents you've played</li>
+        <ul>
+            <li>Your match win percentage against your opponents is roughly your average win rate against each of your opponents</li>
+            <li>The numbers that compose this average win rate against your opponent can vary:</li>
+            <ul>
+                <li>Against an opponent who has a higher Match score® than you, you take a percentage of their win rate value</li>
+                <li>Against an opponent who has a lower Match score® than you, you take your win rate against them</li>
+            </ul>
+        </ul>
+    </ul>
+    
+    <h4>tl;dr</h4>
+    <p>Most of your Match score® is weighted in favor of winning matches. However, a smaller portion of your Match score®
+    is weighted based upon your matches (and the match win percentage of your opponent)</p>
+</div>

@@ -5,15 +5,19 @@
 }
 
 <h2>All</h2>
+<div class="alert alert-warning">
+    How are stats calculated? @Html.ActionLink("Click me to find out how", "How", "Stats")
+</div>
 
 <div class="container">
     <h2>Table of stats</h2>
+
     <table class="table">
 
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Match score</th>
+                <th>Match score®</th>
                 <th>Game win percentage</th>
                 <th>Match win percentage</th>
             </tr>
@@ -22,25 +26,33 @@
             @for (int i = 0; i < list.Count; i++)
             {
                 var className = "";
-                if (list[i].MatchScore > 1 && list[i].MatchScore <= 29)
+                if (list[i].MatchScore > 1 && list[i].MatchScore <= 12)
                 {
                     className = "danger";
                 }
-                else if (list[i].MatchScore > 29 && list[i].MatchScore <= 46)
+                else if (list[i].MatchScore > 12 && list[i].MatchScore <= 29)
+                {
+                    className = "sunset";
+                }
+                else if (list[i].MatchScore > 29 && list[i].MatchScore <= 42)
                 {
                     className = "warning";
                 }
-                else if (list[i].MatchScore > 46 && list[i].MatchScore <= 54)
+                else if (list[i].MatchScore > 42 && list[i].MatchScore <= 55)
                 {
                     className = "success";
                 }
-                else if (list[i].MatchScore > 54 && list[i].MatchScore <= 70)
+                else if (list[i].MatchScore > 55 && list[i].MatchScore <= 65)
                 {
                     className = "info";
                 }
-                else if (list[i].MatchScore > 70)
+                else if (list[i].MatchScore > 65 && list[i].MatchScore <= 80)
                 {
-                    className = "elite";
+                    className = "seablue";
+                }
+                else if (list[i].MatchScore > 80)
+                {
+                    className = "darkblue";
                 }
 
                 <tr class="@(className)">

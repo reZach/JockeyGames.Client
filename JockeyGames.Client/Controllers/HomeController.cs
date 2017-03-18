@@ -17,5 +17,10 @@ namespace JockeyGames.Client.Controllers
         {
             return View();
         }
+
+        public ActionResult Tournament()
+        {
+            return View();
+        }
     }
 }

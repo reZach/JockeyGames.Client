@@ -18,6 +18,9 @@ html, body{
 .dl-horizontal dt {
     white-space: normal;
 }
+@media(max-width:767px){
+    dt {float:left;padding-right:15px;}
+}
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
@@ -49,24 +52,62 @@ textarea {
   background-color: #d9edf7;
 }
 
-.table > thead > tr > td.elite,
-.table > tbody > tr > td.elite,
-.table > tfoot > tr > td.elite,
-.table > thead > tr > th.elite,
-.table > tbody > tr > th.elite,
-.table > tfoot > tr > th.elite,
-.table > thead > tr.elite > td,
-.table > tbody > tr.elite > td,
-.table > tfoot > tr.elite > td,
-.table > thead > tr.elite > th,
-.table > tbody > tr.elite > th,
-.table > tfoot > tr.elite > th {
-  background-color: #384f2f;
-  border-color: #d6e9c6;
-  color:#ffffff;
+.table > thead > tr > td.sunset,
+.table > tbody > tr > td.sunset,
+.table > tfoot > tr > td.sunset,
+.table > thead > tr > th.sunset,
+.table > tbody > tr > th.sunset,
+.table > tfoot > tr > th.sunset,
+.table > thead > tr.sunset > td,
+.table > tbody > tr.sunset > td,
+.table > tfoot > tr.sunset > td,
+.table > thead > tr.sunset > th,
+.table > tbody > tr.sunset > th,
+.table > tfoot > tr.sunset > th {
+  background-color: #f6e0cd;
 }
 
-.alert-elite {
-  color: #ffffff;
-  background-color: #384f2f;
+.alert-sunset{
+    background-color:#f6e0cd;
+}
+
+
+.table > thead > tr > td.seablue,
+.table > tbody > tr > td.seablue,
+.table > tfoot > tr > td.seablue,
+.table > thead > tr > th.seablue,
+.table > tbody > tr > th.seablue,
+.table > tfoot > tr > th.seablue,
+.table > thead > tr.seablue > td,
+.table > tbody > tr.seablue > td,
+.table > tfoot > tr.seablue > td,
+.table > thead > tr.seablue > th,
+.table > tbody > tr.seablue > th,
+.table > tfoot > tr.seablue > th {
+  background-color: #c8eaea;
+}
+
+.alert-seablue{
+    background-color:#c8eaea;
+}
+
+
+.table > thead > tr > td.darkblue,
+.table > tbody > tr > td.darkblue,
+.table > tfoot > tr > td.darkblue,
+.table > thead > tr > th.darkblue,
+.table > tbody > tr > th.darkblue,
+.table > tfoot > tr > th.darkblue,
+.table > thead > tr.darkblue > td,
+.table > tbody > tr.darkblue > td,
+.table > tfoot > tr.darkblue > td,
+.table > thead > tr.darkblue > th,
+.table > tbody > tr.darkblue > th,
+.table > tfoot > tr.darkblue > th {
+  background-color: #a9aeea;
+  border-color: #d6e9c6;
+}
+
+.alert-darkblue {
+  background-color: #a9aeea;
 }

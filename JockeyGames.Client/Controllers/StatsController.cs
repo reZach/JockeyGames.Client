@@ -32,35 +32,14 @@ namespace JockeyGames.Client.Controllers
         // GET: Stats/All
         public async Task<ActionResult> All()
         {
-            List<StatsDetailViewModel> viewmodel = new List<StatsDetailViewModel>();
             List<PlayerDTO> players = await playerService.GetPlayersAsync();
             List<MatchDTO> matches = await matchesService.GetMatchesAsync();
-            List<MatchDTO> stats = new List<MatchDTO>();
 
-            foreach (PlayerDTO p in players)
-            {
-                // Add matches player has played in
-                foreach (MatchDTO m in matches)
-                {
-                    if (m.PlayerId1 == p.Id || m.PlayerId2 == p.Id)
-                    {
-                        stats.Add(m);
-                    }
-                }
+            StatsCompositeViewModel viewmodel = new StatsCompositeViewModel(players, matches);
 
-                var single = new StatsDetailViewModel();
-                single.Players = players;
-                single.PlayerId = p.Id;
-                single.LoadStats(stats);
+            viewmodel.PlayerStats.Sort((a, b) => a.MatchScore.CompareTo(b.MatchScore));
 
-                viewmodel.Add(single);
-
-                stats.Clear();
-            }
-
-            viewmodel.Sort((a, b) => a.MatchScore.CompareTo(b.MatchScore));
-
-            return View(viewmodel);
+            return View(viewmodel.PlayerStats);
         }
 
         // GET: Stats/Detail/5
@@ -77,12 +56,18 @@ namespace JockeyGames.Client.Controllers
                 return HttpNotFound();
             }
 
-            var viewmodel = new StatsDetailViewModel();
-            viewmodel.Players = await playerService.GetPlayersAsync();
-            viewmodel.PlayerId = id.Value;
-            viewmodel.LoadStats(stats);            
+            List<PlayerDTO> players = await playerService.GetPlayersAsync();
+            List<MatchDTO> matches = await matchesService.GetMatchesAsync();
 
-            return View(viewmodel);
+            StatsCompositeViewModel viewmodel = new StatsCompositeViewModel(players, matches);
+
+            return View(viewmodel.GetSinglePlayerById(id.Value));
+        }
+
+        // GET: Stats/How
+        public ActionResult How()
+        {
+            return View();
         }
     }
 }

@@ -4,25 +4,33 @@
     ViewBag.Title = "Details";
 
     var className = "";
-    if (Model.MatchScore > 1 && Model.MatchScore <= 29)
+    if (Model.MatchScore > 1 && Model.MatchScore <= 12)
     {
         className = "danger";
     }
-    else if (Model.MatchScore > 29 && Model.MatchScore <= 46)
+    else if (Model.MatchScore > 12 && Model.MatchScore <= 29)
+    {
+        className = "sunset";
+    }
+    else if (Model.MatchScore > 29 && Model.MatchScore <= 42)
     {
         className = "warning";
     }
-    else if (Model.MatchScore > 46 && Model.MatchScore <= 54)
+    else if (Model.MatchScore > 42 && Model.MatchScore <= 55)
     {
         className = "success";
     }
-    else if (Model.MatchScore > 54 && Model.MatchScore <= 70)
+    else if (Model.MatchScore > 55 && Model.MatchScore <= 65)
     {
         className = "info";
     }
-    else if (Model.MatchScore > 70)
+    else if (Model.MatchScore > 65 && Model.MatchScore <= 80)
     {
-        className = "elite";
+        className = "seablue";
+    }
+    else if (Model.MatchScore > 80)
+    {
+        className = "darkblue";
     }
 }
 
@@ -31,6 +39,10 @@
 <div>
     <h4>Stats</h4>
     <hr />
+    <div class="alert alert-warning">
+        How are stats calculated? @Html.ActionLink("Click me to find out how", "How", "Stats")
+    </div>
+
     <dl class="dl-horizontal alert-@(className)">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -41,7 +53,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MatchScore)
+            @Html.DisplayNameFor(model => model.MatchScore)®
         </dt>
 
         <dd>
@@ -126,5 +138,5 @@
     </table>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to stats", "All")
 </p>

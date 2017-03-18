@@ -156,6 +156,7 @@
     <Compile Include="ViewModels\MatchHistoryViewModel.cs" />
     <Compile Include="ViewModels\MatchViewModel.cs" />
     <Compile Include="ViewModels\StatListViewModel.cs" />
+    <Compile Include="ViewModels\StatsCompositeViewModel.cs" />
     <Compile Include="ViewModels\StatsDetailViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +210,8 @@
     <Content Include="Views\Matches\Index.cshtml" />
     <Content Include="Views\Stats\Details.cshtml" />
     <Content Include="Views\Stats\All.cshtml" />
+    <Content Include="Views\Stats\How.cshtml" />
+    <Content Include="Views\Home\Tournament.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

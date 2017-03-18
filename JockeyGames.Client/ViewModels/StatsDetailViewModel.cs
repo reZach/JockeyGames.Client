@@ -41,7 +41,6 @@ namespace JockeyGames.Client.ViewModels
             var g1 = 0;
             var g2 = 0;
             var g3 = 0;
-            var scale21points = false;
 
             foreach (MatchDTO m in stats)
             {
@@ -72,6 +71,14 @@ namespace JockeyGames.Client.ViewModels
 
                 // check if player1 or 2
                 isPlayer1 = m.PlayerId1 == PlayerId;
+                if (isPlayer1)
+                {
+                    PlayerId = m.PlayerId1;
+                }
+                else
+                {
+                    PlayerId = m.PlayerId2;
+                }
 
                 // get scores
                 g1 = m.G1P1Score - m.G1P2Score;
@@ -119,97 +126,6 @@ namespace JockeyGames.Client.ViewModels
                     }
                 }
 
-                // calc match score
-                if (m.G1P1Score >= 21 | m.G1P2Score >= 21)
-                {
-                    scale21points = true;
-                }
-
-                // get running score
-                int runningScore = 0;
-
-                // 11 point scale
-                if (!scale21points)
-                {
-                    if (isPlayer1)
-                    {
-                        if (g1 > 0)
-                        {
-                            runningScore += CalculatePointsForWinner(Math.Abs(g1));
-                        }
-                        else
-                        {
-                            runningScore += CalculatePointsForLoser(Math.Abs(g1));
-                        }
-                    }
-                    else
-                    {
-                        if (g1 > 0)
-                        {
-                            runningScore += CalculatePointsForLoser(Math.Abs(g1));
-                        }
-                        else
-                        {
-                            runningScore += CalculatePointsForWinner(Math.Abs(g1));
-                        }
-                    }
-                    if (isPlayer1)
-                    {
-                        if (g2 > 0)
-                        {
-                            runningScore += CalculatePointsForWinner(Math.Abs(g2));
-                        }
-                        else
-                        {
-                            runningScore += CalculatePointsForLoser(Math.Abs(g2));
-                        }
-                    }
-                    else
-                    {
-                        if (g2 > 0)
-                        {
-                            runningScore += CalculatePointsForLoser(Math.Abs(g2));
-                        }
-                        else
-                        {
-                            runningScore += CalculatePointsForWinner(Math.Abs(g2));
-                        }
-                    }
-                    if (isPlayer1)
-                    {
-                        if (g3 > 0)
-                        {
-                            runningScore += CalculatePointsForWinner(Math.Abs(g3));
-                        }
-                        else
-                        {
-                            runningScore += CalculatePointsForLoser(Math.Abs(g3));
-                        }
-                    }
-                    else
-                    {
-                        if (g3 > 0)
-                        {
-                            runningScore += CalculatePointsForLoser(Math.Abs(g3));
-                        }
-                        else
-                        {
-                            runningScore += CalculatePointsForWinner(Math.Abs(g3));
-                        }
-                    }
-
-                    // +30 if you won
-                    if ((isPlayer1 && player1Won) || (!isPlayer1 && !player1Won))
-                    {
-                        runningScore += 30;
-                    }
-                }
-                else if (scale21points)
-                {
-                }
-
-                MatchScore += runningScore;
-
 
                 // match history
                 var opponentId = m.PlayerId1 == PlayerId ? m.PlayerId2 : m.PlayerId1;
@@ -247,14 +163,7 @@ namespace JockeyGames.Client.ViewModels
             if (TotalMatchesPlayed > 0)
             {
                 MatchWinPercentage = Math.Round(((double)TotalMatchesWon / (double)TotalMatchesPlayed), 2) * 100;
-            }
-                        
-
-            // match score
-            if (TotalMatchesPlayed > 0)
-            {
-                MatchScore = MatchScore / TotalMatchesPlayed;
-            }
+            }                       
 
             // sort match history
             MatchHistory.Sort((a, b) => string.CompareOrdinal(a.OpponentName, b.OpponentName));
@@ -275,82 +184,6 @@ namespace JockeyGames.Client.ViewModels
                     }
                 }
             }
-        }
-
-        private int CalculatePointsForWinner(int difference, int scale = 11)
-        {
-            if (scale == 11)
-            {
-                switch (difference)
-                {
-                    case 2:
-                        return 17;
-                    case 3:
-                        return 12;
-                    case 4:
-                        return 13;
-                    case 5:
-                        return 17;
-                    case 6:
-                        return 21;
-                    case 7:
-                        return 25;
-                    case 8:
-                        return 28;
-                    case 9:
-                        return 30;
-                    case 10:
-                        return 31;
-                    case 11:
-                        return 32;
-                    default:
-                        return 0;
-                }
-            }
-            else if (scale == 21)
-            {
-                return 0;
-            }
-
-            return 0;
-        }
-
-        private int CalculatePointsForLoser(int difference, int scale = 11)
-        {
-            if (scale == 11)
-            {
-                switch (difference)
-                {
-                    case 2:
-                        return 12;
-                    case 3:
-                        return 11;
-                    case 4:
-                        return 10;
-                    case 5:
-                        return 9;
-                    case 6:
-                        return 8;
-                    case 7:
-                        return 7;
-                    case 8:
-                        return 6;
-                    case 9:
-                        return 5;
-                    case 10:
-                        return 4;
-                    case 11:
-                        return 0;
-                    default:
-                        return 0;
-                }
-            }
-            else if (scale == 21)
-            {
-                return 0;
-            }
-
-            return 0;
         }
     }
 }
